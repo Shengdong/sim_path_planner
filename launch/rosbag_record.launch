@@ -1,0 +1,10 @@
+<launch>
+    <arg name="machine" default="localhost"/>
+    <include file="$(find vmav_startup)/machine/$(arg machine).machine" />
+
+    <node machine="$(arg machine)" pkg="rosbag" type="record" name="rosbag_record"
+          args="-o /home/asctec/vmav_logs/vmav -e '/$(arg machine)/fcu/(.*)'
+                                                  '/$(arg machine)/vrmagic/cam(.*)/camera_info'
+                                                  '/$(arg machine)/vrmagic/cam(.*)/image_raw'
+                                                  '/$(arg machine)/xbee/(.*)'"/>
+</launch>

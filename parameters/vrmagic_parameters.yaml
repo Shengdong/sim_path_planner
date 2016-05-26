@@ -1,0 +1,13 @@
+frame_rate:    15
+source_format: mono8
+external_trigger: True
+auto_exposure: True
+auto_exposure_time_max: 40
+auto_exposure_bright_threshold: 58
+auto_exposure_bright_percentage: 12
+auto_gain:     False
+gain:          16
+auto_gain_max: 16
+anti_blooming: True
+anti_blooming_voltage: 1.95
+high_dynamic_mode: True

@@ -1,0 +1,8 @@
+<launch>
+    <node name="sim_lattice_planner_2d" pkg="sim_lattice_planner_2d" type="sim_lattice_planner_2d_node" clear_params="true" output="screen">
+      <remap from="goal" to="/move_base_simple/goal" />
+      <remap from="pose" to="/vrep/pose" />
+
+    </node>
+</launch>
+

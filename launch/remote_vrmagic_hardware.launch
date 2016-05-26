@@ -1,0 +1,13 @@
+<launch>
+    <arg name="machine" default="localhost"/>
+    <arg name="vrmagic_machine" default="vrmagic"/>
+    <include file="$(find vmav_startup)/machine/$(arg machine).machine"/>
+    <include file="$(find vmav_startup)/machine/$(arg vrmagic_machine).machine"/>
+    <group ns="$(arg machine)">
+        <node machine="$(arg vrmagic_machine)" name="vrmagic" pkg="vrmagic_device" type="vrmagic_device_node" clear_params="true" output="screen" respawn="true">
+            <param name="frame_id" value="$(arg machine)"/>
+            <rosparam file="$(find vmav_startup)/parameters/vrmagic_parameters.yaml"/>
+        </node>
+        <node machine="$(arg machine)" name="dds_ros" pkg="dds_ros" type="dds_to_ros_bridge_node" clear_params="true" output="screen" respawn="true"/>
+    </group>
+</launch>

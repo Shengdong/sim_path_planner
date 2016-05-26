@@ -1,0 +1,13 @@
+<launch>
+  <arg name="machine" default="localhost"/>
+  <include file="$(find vmav_startup)/machine/$(arg machine).machine" />
+  <group ns="$(arg machine)" clear_params="true">
+    <remap from="fcu/pose" to="xbee/vicon"/>
+    <node machine="$(arg machine)" name="fcu" pkg="asctec_hl_interface" type="hl_node" output="screen" respawn="true" >       
+      <param name="frame_id" value="$(arg machine)" />
+      <rosparam file="$(find vmav_startup)/parameters/fcu_parameters_vicon.yaml" /> 
+      <rosparam file="$(find vmav_startup)/parameters/ssdk_parameters_vicon.yaml" />       
+    </node>
+    <node machine="$(arg machine)" name="waypoint_server" pkg="asctec_hl_interface" type="waypoint_server" output="screen" />
+  </group>
+</launch>

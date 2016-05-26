@@ -1,0 +1,12 @@
+<launch>
+  <arg name="machine" default="localhost"/>
+  <include file="$(find vmav_startup)/machine/$(arg machine).machine" />
+  <group ns="$(arg machine)" clear_params="true">
+    <node name="vslam_sensor" pkg="ssf_updates" type="pose_sensor" clear_params="true" output="screen">
+      <remap from="ssf_core/hl_state_input" to="fcu/ekf_state_out" />
+      <remap from="ssf_core/correction" to="fcu/ekf_state_in" />
+      <remap from="ssf_core/pose_measurement" to="vslam/pose" />
+      <rosparam file="$(find vmav_startup)/parameters/vslam_sensor_fix.yaml" />
+    </node>
+  </group>
+</launch>

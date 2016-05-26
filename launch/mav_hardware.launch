@@ -1,0 +1,16 @@
+<launch>
+    <arg name="machine" default="localhost"/>
+    <include file="$(find vmav_startup)/machine/$(arg machine).machine" />
+
+    <group ns="$(arg machine)" clear_params="true">
+        <node machine="$(arg machine)" name="px4flow" pkg="mavlink_serial_client" type="mavlink_serial_client" output="screen" respawn="true">
+            <param name="frame_id" value="$(arg machine)" />
+            <rosparam file="$(find vmav_startup)/parameters/px4flow_parameters.yaml"/>
+        </node>
+
+        <node machine="$(arg machine)" name="xbee" pkg="mavlink_serial_client" type="mavlink_serial_client" output="screen" respawn="true">
+            <param name="frame_id" value="$(arg machine)" />
+            <rosparam file="$(find vmav_startup)/parameters/xbee_parameters.yaml"/>
+        </node>
+    </group>
+</launch>

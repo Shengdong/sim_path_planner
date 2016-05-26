@@ -1,0 +1,9 @@
+boundary_filename:     ""
+clearance:             0.5
+max_flight_altitude:   4
+min_flight_altitude:   1.5
+lattice_resolution:    0.25
+path_hold_distance:    0.3
+planning_hz:           10.0
+wp_angular_tolerance:  0.3
+wp_distance_tolerance: 0.3

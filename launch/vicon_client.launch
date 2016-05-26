@@ -1,0 +1,10 @@
+<launch>
+    <arg name="machine" default="localhost"/>
+
+    <group ns="$(arg machine)">
+        <node name="vicon" pkg="vicon_client" type="vicon_client_node" clear_params="true" output="screen" respawn="true">
+            <param name="frame_id" value="$(arg machine)"/>
+            <rosparam file="$(find vmav_startup)/parameters/vicon_parameters.yaml"/>
+        </node>
+    </group>
+</launch>

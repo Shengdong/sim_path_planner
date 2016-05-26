@@ -1,0 +1,9 @@
+<launch>
+  <arg name="machine" default="localhost"/>
+  <include file="$(find vmav_startup)/machine/$(arg machine).machine" />
+  <group ns="$(arg machine)" clear_params="true">
+    <node name="gcam_slam" pkg="gcam_slam" type="gcam_slam_node" clear_params="true" output="screen">
+      <rosparam file="$(find vmav_startup)/parameters/vslam_parameters.yaml" />
+    </node>
+  </group>
+</launch>

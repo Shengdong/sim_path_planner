@@ -1,0 +1,16 @@
+# Goal definition
+Header header
+geometry_msgs/Point goal_pos
+float64 goal_yaw
+---
+# Result definition
+Header header
+geometry_msgs/Point result_pos
+float64 result_yaw
+int32 status_code
+int32 REACHED_GOAL = 0
+---
+# Feedback definition
+Header header
+geometry_msgs/Point current_pos
+float64 current_yaw

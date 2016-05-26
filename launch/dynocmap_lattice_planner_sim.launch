@@ -1,0 +1,16 @@
+<launch>
+  <arg name="machine" default="localhost"/>
+  <include file="$(find vmav_startup)/machine/$(arg machine).machine" />
+  <group ns="$(arg machine)" clear_params="true">
+    <node name="dynocmap_lattice_planner" pkg="dynocmap_lattice_planner" type="dynocmap_lattice_planner_node" clear_params="true" output="screen">
+      <remap from="goal" to="/move_base_simple/goal" />
+      <remap from="pose" to="/vrep/pose" />
+      <remap from="map" to="/map" />
+      <rosparam file="$(find vmav_startup)/parameters/dynocmap_lattice_planner_parameters.yaml" />
+    </node>
+    <node name="path_follower" pkg="path_follower" type="path_follower_node" clear_params="true" output="screen">
+      <remap from="commanded_pose" to="/vrep/control" />
+      <remap from="pose" to="/vrep/pose" />
+    </node>
+  </group>
+</launch>

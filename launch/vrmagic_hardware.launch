@@ -1,0 +1,10 @@
+<launch>
+    <arg name="machine" default="localhost"/>
+
+    <group ns="$(arg machine)">
+        <node name="vrmagic" pkg="vrmagic_device" type="vrmagic_device_node" clear_params="true" output="screen" respawn="true">
+            <param name="frame_id" value="$(arg machine)"/>
+            <rosparam file="$(find vmav_startup)/parameters/vrmagic_parameters.yaml"/>
+        </node>
+    </group>
+</launch>

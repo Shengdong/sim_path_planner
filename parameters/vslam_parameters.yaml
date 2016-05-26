@@ -1,0 +1,7 @@
+camera_ns_0: /delta/vrmagic/cam0
+camera_ns_1: /delta/vrmagic/cam1
+camera_ns_2: /delta/vrmagic/cam2
+camera_ns_3: /delta/vrmagic/cam3
+imu_topic:   /delta/fcu/imu
+pose_topic:  /delta/vslam/pose
+voc_file:    /home/hengli/catkin_ws/orb.yml.gz
