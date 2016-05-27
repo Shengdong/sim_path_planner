@@ -25,9 +25,11 @@ private:
     public:
         HeuristicCell()
          : distance(-1)
+         , obstacle(false)
         {}
 
         int distance;
+        bool obstacle;
     };
 
     boost::shared_ptr<Grid2D<HeuristicCell> > m_grid;

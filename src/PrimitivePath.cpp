@@ -4,7 +4,7 @@
 #include <iomanip>
 #include <iostream>
 #include <sstream>
-
+#include <math.h>
 
 PrimitivePath::PrimitivePath(double resolution)
  : m_resolution(resolution)

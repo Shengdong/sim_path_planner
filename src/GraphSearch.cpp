@@ -66,6 +66,8 @@ GraphSearch::init(const Pose& poseStart,
                 s->z() = m_lpStart.z();
                 s->g() = FLOAT_MAX;
                 s->cost() = FLOAT_MAX;
+                s->setunexplored();
+                s->previous().reset() ;
             }
         }
     }
@@ -107,7 +109,13 @@ GraphSearch::reset(void)
         m_goalS.reset();
     }
 
+    while(!m_openPQ.empty())
+    {
+        m_openPQ.pop();
+    }
+
     m_closedSet.clear();
+    m_path.clear();
 
     m_fixedSolution.clear();
     m_currentSolution.clear();
@@ -153,7 +161,7 @@ GraphSearch::PathSearch(LatticePose Start, LatticePose Goal)
 
             while(waypoint != NULL)
             {              
-                 printf("Waypoint Pose is (%d, %d, %f)\n", waypoint->x(), waypoint->y(), atan2(waypoint->xYaw(), waypoint->yYaw()));
+//                 printf("Waypoint Pose is (%d, %d, %f)\n", waypoint->x(), waypoint->y(), atan2(waypoint->xYaw(), waypoint->yYaw()));
 
                  StatePtr N_neighbor = waypoint->previous();
                  waypoint = N_neighbor;
@@ -276,7 +284,7 @@ GraphSearch::extractPathSolution(const geometry_msgs::PoseStamped::ConstPtr& pos
 
         p.pose.position.x = (s->x() + 0.5) * m_resolution;
         p.pose.position.y = (s->y() + 0.5) * m_resolution;
-        p.pose.position.z = (s->z() + 0.5) * m_resolution;
+        p.pose.position.z = yaw;
 
         path.poses.push_back(p);
     }

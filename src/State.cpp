@@ -9,6 +9,7 @@ State::State()
  : LatticePose()
  , m_g(FLOAT_MAX)
  , m_closed(false)
+ , m_status(INIT)
  , m_index(-1)
  , m_isInitialized(false)
 {
@@ -19,6 +20,7 @@ State::State(const State& s)
  : LatticePose(s)
  , m_g(s.m_g)
  , m_closed(false)
+ , m_status(INIT)
  , m_index(-1)
  , m_isInitialized(false)
 {
@@ -29,6 +31,7 @@ State::State(const LatticePose& p)
  : LatticePose(p)
  , m_g(FLOAT_MAX)
  , m_closed(false)
+ , m_status(INIT)
  , m_index(-1)
  , m_isInitialized(false)
 {
@@ -42,6 +45,7 @@ State::clear(void)
     m_closed = false;
     m_index = -1;
     m_isInitialized = false;
+    m_status = INIT;
 }
 
 float&

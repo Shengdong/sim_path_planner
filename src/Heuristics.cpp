@@ -110,10 +110,16 @@ Heuristics::populateHeuristicMap(const Eigen::Vector2i& startPoint)
             HeuristicCell* cellNeighbor = m_grid->getMapRC(yNeighbor, xNeighbor);
             if (cellNeighbor && cellNeighbor->distance == kUnknownDist)
             {
+                if(!cellNeighbor->obstacle)
+                {
                     bucket1->push_back(Eigen::Vector2i(xNeighbor, yNeighbor));
-
-                    cellNeighbor->distance = distNeighbor;
                 
+                    cellNeighbor->distance = distNeighbor;
+                }
+                else
+                {
+                    cellNeighbor->distance = 100000;
+                }
             }
         }
     }

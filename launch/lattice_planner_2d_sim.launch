@@ -2,7 +2,85 @@
     <node name="sim_lattice_planner_2d" pkg="sim_lattice_planner_2d" type="sim_lattice_planner_2d_node" clear_params="true" output="screen">
       <remap from="goal" to="/move_base_simple/goal" />
       <remap from="pose" to="/vrep/pose" />
-
     </node>
+  <node pkg="apriltags_ros_sim" type="apriltag_detector_node_sim" name="apriltag_detector_sim" output="screen">
+    <rosparam param="tag_descriptions">[
+      {id: 0, size: 0.04, frame_id: world_frame},
+      {id: 1, size: 0.04, frame_id: world_frame},
+      {id: 2, size: 0.04, frame_id: world_frame},
+      {id: 3, size: 0.04, frame_id: world_frame},
+      {id: 4, size: 0.04, frame_id: world_frame},
+      {id: 5, size: 0.04, frame_id: world_frame},
+      {id: 6, size: 0.04, frame_id: world_frame},
+      {id: 7, size: 0.04, frame_id: world_frame},
+      {id: 8, size: 0.04, frame_id: world_frame},
+      {id: 9, size: 0.04, frame_id: world_frame},
+      {id: 10, size: 0.04, frame_id: world_frame},
+      {id: 11, size: 0.04, frame_id: world_frame},
+      {id: 12, size: 0.04, frame_id: world_frame},
+      {id: 13, size: 0.04, frame_id: world_frame},
+      {id: 14, size: 0.04, frame_id: world_frame},
+      {id: 15, size: 0.04, frame_id: world_frame},
+      {id: 16, size: 0.04, frame_id: world_frame},
+      {id: 17, size: 0.04, frame_id: world_frame},
+      {id: 18, size: 0.04, frame_id: world_frame},
+      {id: 19, size: 0.04, frame_id: world_frame},
+      {id: 20, size: 0.04, frame_id: world_frame},
+      {id: 21, size: 0.04, frame_id: world_frame},
+      {id: 22, size: 0.04, frame_id: world_frame},
+      {id: 23, size: 0.04, frame_id: world_frame},
+      {id: 24, size: 0.04, frame_id: world_frame},
+      {id: 25, size: 0.04, frame_id: world_frame},
+      {id: 26, size: 0.04, frame_id: world_frame},
+      {id: 27, size: 0.04, frame_id: world_frame},
+      {id: 28, size: 0.04, frame_id: world_frame},
+      {id: 29, size: 0.04, frame_id: world_frame},
+      {id: 30, size: 0.04, frame_id: world_frame},
+      {id: 31, size: 0.04, frame_id: world_frame},
+      {id: 32, size: 0.04, frame_id: world_frame},
+      {id: 33, size: 0.04, frame_id: world_frame},
+      {id: 34, size: 0.04, frame_id: world_frame},
+      {id: 35, size: 0.04, frame_id: world_frame},
+      {id: 36, size: 0.04, frame_id: world_frame},
+      {id: 37, size: 0.04, frame_id: world_frame},
+      {id: 38, size: 0.04, frame_id: world_frame},
+      {id: 39, size: 0.04, frame_id: world_frame},
+      {id: 40, size: 0.04, frame_id: world_frame},
+      {id: 41, size: 0.04, frame_id: world_frame},
+      {id: 42, size: 0.04, frame_id: world_frame},
+      {id: 43, size: 0.04, frame_id: world_frame},
+      {id: 44, size: 0.04, frame_id: world_frame},
+      {id: 45, size: 0.04, frame_id: world_frame},
+      {id: 46, size: 0.04, frame_id: world_frame},
+      {id: 47, size: 0.04, frame_id: world_frame},
+      {id: 48, size: 0.04, frame_id: world_frame},
+      {id: 49, size: 0.04, frame_id: world_frame},
+      {id: 50, size: 0.04, frame_id: world_frame},
+      {id: 51, size: 0.04, frame_id: world_frame},
+      {id: 52, size: 0.04, frame_id: world_frame},
+      {id: 53, size: 0.04, frame_id: world_frame},
+      {id: 54, size: 0.04, frame_id: world_frame},
+      {id: 55, size: 0.04, frame_id: world_frame},
+      {id: 56, size: 0.04, frame_id: world_frame},
+      {id: 57, size: 0.04, frame_id: world_frame},
+      {id: 58, size: 0.04, frame_id: world_frame},
+      {id: 59, size: 0.04, frame_id: world_frame},
+      {id: 60, size: 0.04, frame_id: world_frame},
+      {id: 61, size: 0.04, frame_id: world_frame},
+      {id: 62, size: 0.04, frame_id: world_frame},
+      {id: 63, size: 0.04, frame_id: world_frame},
+      {id: 64, size: 0.04, frame_id: world_frame},
+      {id: 65, size: 0.04, frame_id: world_frame},
+      {id: 66, size: 0.04, frame_id: world_frame},
+      {id: 67, size: 0.04, frame_id: world_frame},
+      {id: 68, size: 0.04, frame_id: world_frame},
+      {id: 69, size: 0.04, frame_id: world_frame},
+      {id: 70, size: 0.04, frame_id: world_frame}
+]
+    </rosparam>
+  </node>
+  <node name="controller_node" pkg="controller_node" type="controller_node" clear_params="true" output="screen">
+  </node>
+
 </launch>
 

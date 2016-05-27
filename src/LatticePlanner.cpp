@@ -139,6 +139,10 @@ LatticePlanner::replan(double allocatedTimeInSec)
 
     case STATE_PLANNED:
     {
+        nav_msgs::Path path1;
+        m_pathPub.publish(path1);
+
+        m_state = STATE_PLANNED;
         break;
     }
     case STATE_RUNNING:
@@ -150,7 +154,7 @@ LatticePlanner::replan(double allocatedTimeInSec)
         ros::Time startPlanTime = ros::Time::now();
 
 
-         status = m_graphSearch->iterate(m_pose, path);
+        status = m_graphSearch->iterate(m_pose, path);
 
 
 
@@ -158,7 +162,6 @@ LatticePlanner::replan(double allocatedTimeInSec)
         {
         case GraphSearch::STATUS_NO_PATH:
             ROS_WARN("No path to the goal. Attempting to replan...");
-
             m_state = STATE_IDLE;
             break;
         case GraphSearch::STATUS_OK:

@@ -29,7 +29,6 @@ int main(int argc, char** argv)
         ros::Time startTime = ros::Time::now();
 
         planner.replan(planningPeriod);
-        sleep(2);
 
         ros::spinOnce();
 
